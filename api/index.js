@@ -60,6 +60,7 @@ app.post("/submit-form", async (req, res) => {
 
     let mailOptions = {
       from: process.env.EMAIL_USER || "pawanbhayde721@gmail.com",
+      to: email,
       subject: "Your QR Code",
       html: "<h1>Here is your QR Code</h1>",
       attachments: [
