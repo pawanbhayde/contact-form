@@ -5,10 +5,14 @@ const nodemailer = require("nodemailer");
 const { PDFDocument } = require("pdf-lib");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 app.use(express.static("public")); // to serve the HTML file
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
 app.post("/submit-form", async (req, res) => {
   const { name, email, phone, srnum, asset } = req.body;
@@ -77,4 +81,6 @@ app.post("/submit-form", async (req, res) => {
   }
 });
 
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
