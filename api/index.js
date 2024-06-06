@@ -56,7 +56,6 @@ app.post("/submit-form", async (req, res) => {
 
     let mailOptions = {
       from: process.env.EMAIL_USER || "pawanbhayde721@gmail.com",
-      to: email,
       subject: "Your QR Code",
       html: "<h1>Here is your QR Code</h1>",
       attachments: [
@@ -78,6 +77,4 @@ app.post("/submit-form", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;
