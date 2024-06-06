@@ -2,7 +2,9 @@ const express = require("express");
 const qrcode = require("qrcode");
 const nodemailer = require("nodemailer");
 const { PDFDocument } = require("pdf-lib");
+const cors = require("cors");
 
+app.use(cors());
 const app = express();
 const PORT = process.env.PORT || 4000;
 
