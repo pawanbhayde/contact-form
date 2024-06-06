@@ -2,12 +2,12 @@ const express = require("express");
 const qrcode = require("qrcode");
 const nodemailer = require("nodemailer");
 const { PDFDocument } = require("pdf-lib");
-const cors = require("cors");
+const cors = require("cors"); // Import the cors package
 
-app.use(cors());
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+app.use(cors()); // Use the cors middleware
 app.use(express.json()); // Use built-in JSON parser
 app.use(express.static("public")); // To serve the HTML file
 
