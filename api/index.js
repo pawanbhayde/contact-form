@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const qrcode = require("qrcode");
 const nodemailer = require("nodemailer");
 const { PDFDocument } = require("pdf-lib");
@@ -7,9 +6,8 @@ const { PDFDocument } = require("pdf-lib");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(bodyParser.json());
-app.use(express.json());
-app.use(express.static("public")); // to serve the HTML file
+app.use(express.json()); // Use built-in JSON parser
+app.use(express.static("public")); // To serve the HTML file
 
 app.get("/", (req, res) => {
   res.send("Hello World");
