@@ -12,7 +12,7 @@ app.use(express.json()); // Use built-in JSON parser
 app.use(express.static("public")); // To serve the HTML file
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Hello World Server for Procohat");
 });
 
 app.post("/submit-form", async (req, res) => {
