@@ -28,7 +28,7 @@ app.post("/submit-form", async (req, res) => {
     });
 
     // Generate QR code
-    const qrCodeData = `Assignee: ${name}\nEmail Address: ${email}\nContact Number: ${phone}\nSr. Number: ${srnum}\nAsset Number: ${asset}`;
+    const qrCodeData = `Assignee: ${name}\nEmail Address: ${email}\nContact Number: ${phone}\nSerial Name: ${srnum}\nModel Name: ${asset}`;
     const qrCodeImage = await qrcode.toDataURL(qrCodeData);
 
     // Create a PDF document and add the QR code image
@@ -69,6 +69,7 @@ app.post("/submit-form", async (req, res) => {
           filename: "qrcode.pdf",
           content: Buffer.from(pdfBytes),
           contentType: "application/pdf",
+          text: 'Name'
         },
       ],
     };
