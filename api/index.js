@@ -2,14 +2,14 @@ const express = require("express");
 const qrcode = require("qrcode");
 const nodemailer = require("nodemailer");
 const { PDFDocument } = require("pdf-lib");
-const cors = require("cors"); // Import the cors package
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors()); // Use the cors middleware
-app.use(express.json()); // Use built-in JSON parser
-app.use(express.static("public")); // To serve the HTML file
+app.use(cors());
+app.use(express.json());
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -52,15 +52,17 @@ app.post("/submit-form", async (req, res) => {
 
     // Send email with PDF attachment
     let transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.hostinger.com",
+      port: 465,
+      secure: true,
       auth: {
-        user: process.env.EMAIL_USER || "pawanbhayde721@gmail.com",
-        pass: process.env.EMAIL_PASS || "eatcgzourefdlyof",
+        user: "no-reply@infivent.io",
+        pass: "Pass@2008",
       },
     });
 
     let mailOptions = {
-      from: process.env.EMAIL_USER || "pawanbhayde721@gmail.com",
+      from: process.env.EMAIL_USER || "no-reply@infivent.io",
       to: email,
       subject: "Your QR Code",
       html: "<h1>Here is your QR Code</h1>",
